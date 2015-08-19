@@ -1,0 +1,11 @@
+<ion-view class="padding">
+  <h1 ng-click="test()">God Tools</h1>
+  <img>
+  <ul class="home-package-list">
+    <li ng-repeat="package in home.packages">
+      <a href="#/{{package.code}}/en" nav-transition="ios">
+        <button class="button button-positive">{{package.name}}</button>
+      </a>
+    </li>
+  </ul>
+</ion-view>
