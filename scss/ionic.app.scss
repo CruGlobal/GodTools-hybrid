@@ -46,3 +46,21 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     }
   }
 }
+
+
+
+
+.kgp-slide1 {
+  padding: 48px 40px;
+  background: black url("../img/92ac9f7ed2c2ff29973e00564d6ab88e08e13edc.png") no-repeat;
+  height: 100%;
+  background-size: contain;
+
+  h1, h2 {
+    text-align: right;
+  }
+  h2 {
+    margin-bottom: 100px;
+  }
+  p { font-size: 22px; }
+}
