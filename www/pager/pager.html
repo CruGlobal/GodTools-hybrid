@@ -6,7 +6,8 @@
     </a>
   </ion-header-bar>
   <ion-content scroll="false" class="package-slider">
-    <ion-slide-box on-slide-changed="pager.toggleBars(false)" ng-click="pager.toggleBars()">
+    <ion-slide-box on-slide-changed="pager.toggleBars(false)" ng-click="pager.toggleBars()"
+                   on-swipe-up="pager.toggleLanguage()">
       <ion-slide>
         <ng-include src="'kgp/slide1.html'"></ng-include>
       </ion-slide>
