@@ -1,0 +1,27 @@
+<ion-pane class="package-pager-pane" ng-class="{showBars: pager.showBars}">
+  <ion-header-bar>
+    <a class="button back-button buttons button-clear button-clear header-item" ng-click="$ionicGoBack()"
+       href="#/">
+      <i class="icon ion-ios-arrow-back"></i> Back
+    </a>
+  </ion-header-bar>
+  <ion-content scroll="false" class="package-slider">
+    <ion-slide-box on-slide-changed="pager.toggleBars(false)" ng-click="pager.toggleBars()">
+      <ion-slide>
+        <ng-include src="'kgp/slide1.html'"></ng-include>
+      </ion-slide>
+      <ion-slide>
+        <div class="box yellow"><h1>YELLOW</h1></div>
+      </ion-slide>
+      <ion-slide>
+        <div class="box pink"><h1>PINK</h1></div>
+      </ion-slide>
+      <ion-slide>
+        <div class="box red"><h1>RED</h1></div>
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+  <div class="bar bar-footer bar-balanced">
+    <div class="title">Footer</div>
+  </div>
+</ion-pane>

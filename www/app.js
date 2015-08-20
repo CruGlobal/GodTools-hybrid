@@ -26,9 +26,9 @@ angular.module('GodTools', ['ionic'])
       templateUrl: 'home/home.html',
       controller: 'HomeCtrl as home'
     })
-    .state('kgp', {
+    .state('view', {
       url: '/kgp/:languageid',
-      templateUrl: 'kgp/pager.html',
-      //controller: 'ViewController'
+      templateUrl: 'pager/pager.html',
+      controller: 'PackagePagerCtrl as pager'
     })
 })

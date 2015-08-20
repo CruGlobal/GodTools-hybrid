@@ -21,3 +21,28 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+
+.package-pager-pane {
+  .has-header {
+    top: 0;
+  }
+  .slider {
+    height: 100%;
+  }
+  .bar-header {
+    transition: top ease .3s;
+    top: -44px;
+  }
+  .bar-footer {
+    transition: bottom ease .3s;
+    bottom: -44px;
+  }
+  &.showBars {
+    .bar-header {
+      top: 0;
+    }
+    .bar-footer {
+      bottom: 0;
+    }
+  }
+}
