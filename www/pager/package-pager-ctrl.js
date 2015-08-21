@@ -1,7 +1,7 @@
 angular.module('GodTools')
   .controller('PackagePagerCtrl', function($translate) {
     this.showBars = false;
-    this.pageSrc = 'kgp/slide1.html';
+    this.pageNumbers = [1,2,3]
 
     this.toggleBars = function(value) {
       if(value === undefined)
