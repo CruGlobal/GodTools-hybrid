@@ -9,7 +9,10 @@
     <ion-slide-box on-slide-changed="pager.toggleBars(false)" ng-click="pager.toggleBars()"
                    on-swipe-up="pager.toggleLanguage()">
       <ion-slide>
-        <ng-include src="'kgp/slide1.html'"></ng-include>
+        <ng-include src="pager.pageSrc"></ng-include>
+      </ion-slide>
+      <ion-slide>
+        <ng-include src="'kgp/slide2.html'"></ng-include>
       </ion-slide>
       <ion-slide>
         <div class="box yellow"><h1>YELLOW</h1></div>

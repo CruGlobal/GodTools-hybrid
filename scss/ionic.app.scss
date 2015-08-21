@@ -40,21 +40,60 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   &.showBars {
     .bar-header {
       top: 0;
+      border-bottom: 1px solid #B2B2B2;
     }
     .bar-footer {
       bottom: 0;
     }
   }
+  .slider {
+    background-color: #383838;
+  }
 }
 
 
 
+.kgp-slide {
+  height: 100%;
+  color: white;
+  padding: 1em 0 2em;
+  font-size: 16px;
+
+  .kgp-slide-header {
+    background-color: white;
+    margin-right: 1em;
+    padding: .5em 1em;
+    min-height: 4.5em;
+    .kgp-number {
+      float: left;
+      font-size: 4em;
+      line-height: .9em;
+    }
+    h1 {
+      display: inline;
+      font-size: 18px;
+    }
+  }
+  .kgp-button, p {
+    padding: 8px 16px;
+  }
+  .kgp-button {
+    margin-top: 1em;
+  }
+  p {
+    text-align: right;
+    font-weight: bold;
+    position: absolute;
+    bottom: 1.5em;
+    font-size: 1.5em;
+    line-height: 1em;
+  }
+}
+
 
 .kgp-slide1 {
   padding: 48px 40px 48px 20px;
-  background: black url("../img/92ac9f7ed2c2ff29973e00564d6ab88e08e13edc.png") no-repeat;
-  height: 100%;
-  background-size: contain;
+  background: #50a332;
 
   h1, h2 {
     text-align: right;
@@ -68,6 +107,15 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     margin: 0 0 100px 0;
   }
   p {
-    font-size: 20px;
+    font-size: 26px;
+    line-height: 26px;
+    font-weight: 200;
+  }
+}
+.kgp-slide2 {
+  background-color: #7EB14F;
+  .kgp-slide-header, h1 { color: #7EB14F }
+  .kgp-button {
+    margin-top: 4em;
   }
 }
