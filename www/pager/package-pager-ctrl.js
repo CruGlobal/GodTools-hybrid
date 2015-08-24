@@ -1,5 +1,5 @@
 angular.module('GodTools')
-  .controller('PackagePagerCtrl', function($translate) {
+  .controller('PackagePagerCtrl', function($translate, $ionicSlideBoxDelegate) {
     this.showBars = false;
     this.pageNumbers = [1,2,3,4,5]
 
@@ -20,5 +20,6 @@ angular.module('GodTools')
     var i = 1;
     this.addPage = function(){
       this.pageNumbers.push(++i)
+      $ionicSlideBoxDelegate.update()
     }
   })

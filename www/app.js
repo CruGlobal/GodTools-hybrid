@@ -31,6 +31,11 @@ angular.module('GodTools', ['ionic', 'pascalprecht.translate'])
       templateUrl: 'pager/pager.html',
       controller: 'PackagePagerCtrl as pager'
     })
+    .state('settings', {
+      url: '/settings',
+      templateUrl: 'settings/settings.html',
+      controller: 'SettingsCtrl as settingsPage'
+    })
 
     $translateProvider.useLoader('customLoader', {});
     //$translateProvider.useCookieStorage();

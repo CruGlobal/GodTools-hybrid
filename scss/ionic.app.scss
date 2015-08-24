@@ -22,6 +22,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 
 
+ion-nav-view {
+  color: white;
+  .pane {
+    background: url("../img/homescreen_background.png");
+  }
+}
+
+
 .platform-ios.platform-cordova:not(.fullscreen) {
   .has-header { top: 0; }
   .bar-header {
