@@ -1,9 +1,15 @@
-<ion-pane class="package-pager-pane" ng-class="{showBars: pager.showBars}">
+<ion-view hide-nav-bar="true" class="package-pager-pane" ng-class="{showBars: pager.showBars}">
   <ion-header-bar class="bar-calm">
     <a class="button back-button buttons button-clear button-clear header-item" ng-click="$ionicGoBack()"
        href="#/">
       <i class="icon ion-ios-arrow-back"></i> Back
     </a>
+    <div class="buttons buttons-right">
+      <span class="right-buttons">
+        <a class="button button-icon icon ion-gear-b" href="#/settings"></a>
+        <a class="button button-icon icon ion-share"></a>
+      </span>
+    </div>
   </ion-header-bar>
   <ion-content scroll="false" class="package-slider">
     <ion-slide-box on-slide-changed="pager.toggleBars(false)" ng-click="pager.toggleBars()"
@@ -16,4 +22,4 @@
   <div class="bar bar-footer bar-balanced">
     <div class="title">Footer</div>
   </div>
-</ion-pane>
+</ion-view>

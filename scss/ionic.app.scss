@@ -55,6 +55,10 @@ $headerFooterTransTime: 0.25s;
   .bar-header {
     transition: top ease $headerFooterTransTime;
     top: -44px;
+    .buttons-right {
+      right: 0;
+      position: absolute;
+    }
   }
   .bar-footer {
     transition: bottom ease $headerFooterTransTime;
@@ -63,7 +67,6 @@ $headerFooterTransTime: 0.25s;
   &.showBars {
     .bar-header {
       top: 0;
-      border-bottom: 1px solid #B2B2B2;
     }
     .bar-footer {
       bottom: 0;
