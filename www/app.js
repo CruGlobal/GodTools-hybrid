@@ -17,7 +17,7 @@ angular.module('GodTools', ['ionic', 'pascalprecht.translate'])
     }
   });
 })
-.config(function($stateProvider, $urlRouterProvider, $translateProvider) {
+.config(function($stateProvider, $urlRouterProvider, $translateProvider, $ionicConfigProvider) {
   $urlRouterProvider.otherwise('/')
 
   $stateProvider
@@ -40,4 +40,6 @@ angular.module('GodTools', ['ionic', 'pascalprecht.translate'])
     $translateProvider.useLoader('customLoader', {});
     //$translateProvider.useCookieStorage();
     $translateProvider.preferredLanguage('en');
+
+    $ionicConfigProvider.backButton.previousTitleText(false);
 })

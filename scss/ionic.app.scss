@@ -26,16 +26,28 @@ ion-nav-view {
   color: white;
   .pane {
     background: url("../img/homescreen_background.png");
+    @media (min-height: 960px), (min-width: 640px) {
+      background-size: 100% 100%;
+    }
   }
 }
 
 
-.platform-ios.platform-cordova:not(.fullscreen) {
+.home-view {
+  .book-icon {
+    height: 100px;
+    display: block;
+    margin: 3em auto;
+  }
+}
+
+
+.platform-ios.platform-cordova:not(.fullscreen) .package-pager-pane {
   .has-header { top: 0; }
   .bar-header {
     top: -64px;
   }
-  .showBars {
+  &.showBars {
     .bar-header {
       top: 0;
     }
@@ -46,9 +58,7 @@ ion-nav-view {
 }
 $headerFooterTransTime: 0.25s;
 .package-pager-pane {
-  .has-header {
-    top: 0;
-  }
+  .has-header { top: 0; }
   .slider {
     height: 100%;
   }
