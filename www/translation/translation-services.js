@@ -20,11 +20,31 @@ angular.module('GodTools')
 
   .factory('GTLanguages', function($http, $q){
     var fact = {};
+    var languageList = undefined;
     fact.languages = function(){
-      return $http.get('https://api.stage.godtoolsapp.com/godtools-api/rest/meta',
-        {
-          headers: {'Accept' : 'application/json'}
-        })
+      var deferred = $q.defer();
+      if(languageList) {
+        deferred.resolve(languageList);
+      }
+      else {
+        $http.get('https://api.stage.godtoolsapp.com/godtools-api/rest/meta',
+          {
+            headers: {'Accept' : 'application/json'},
+            transformResponse: function(value) {
+              value = JSON.parse(value)
+              var languages = [];
+              angular.forEach(value.languages, function(l) {
+                if(l.packages && l.packages.length && l.packages.length > 0)
+                  languages.push(l)
+              });
+              return languages;
+            }
+          }).success(function(data) {
+            languageList = data;
+            deferred.resolve(languageList)
+          }).error(function() { deferred.reject('Failed to load language list.')})
+      }
+      return deferred.promise
     };
 
     fact.fetchLanguage = function(langCode, packageCode) {

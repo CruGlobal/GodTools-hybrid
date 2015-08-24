@@ -1,0 +1,12 @@
+<ion-view title="{{langPicker.title}}" class="lang-picker-view">
+  <ion-content class="padding">
+    <div class="lang-row" ng-repeat="lang in langPicker.languages | orderBy : 'name'">
+      <div class="lang-row-status">
+        <i class="icon ion-share" ng-show="lang.loading"></i>
+        <i class="icon ion-checkmark" ng-show="lang.selected"></i>
+      </div>
+      <div>{{lang.name}}</div>
+      <div class="lang-row-dow"><span ng-hide="lang.downloaded">Download</span></div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -25,10 +25,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 ion-nav-view {
   color: white;
   .pane {
-    background: url("../img/homescreen_background.png");
+    background: #856756 url("../img/homescreen_background.png");
     @media (min-height: 960px), (min-width: 640px) {
       background-size: 100% 100%;
+      background-color: #826c5c;
     }
+  }
+  ion-content:not(.has-header) .scroll {
+    padding-top: 44px;
   }
 }
 
@@ -177,5 +181,47 @@ $headerFooterTransTime: 0.25s;
   .kgp-slide-header, h1 { color: lighten(#57324D, 15) }
   .kgp-button {
     margin-top: 2em;
+  }
+}
+
+
+.lang-picker-view {
+
+}
+.lang-row {
+  background-color: rgba(255, 255, 255, 0.15);
+  margin-top: 0;
+  display: flex;
+  padding: .6em 1.2em;
+  margin: .6em -10px;
+  div {
+    flex: 1;
+  }
+  .lang-row-status {
+    flex: 0 0 30px;
+  }
+  .lang-row-dow {
+    flex: 0 0 64px;
+  }
+}
+.settings-view {
+  label, .settings-button {
+    font-size: 16px;
+  }
+  .scroll {
+    padding-top: 1em;
+  }
+  label {
+    display: block;
+    padding-left: 1.4em;
+  }
+  .settings-button {
+    display: block;
+    padding: .6em 1.2em;
+    margin: .6em -10px;
+    border: 2px solid white;
+    border-left: 12px solid gold;
+    color: white;
+    text-decoration: none;
   }
 }

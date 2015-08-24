@@ -36,6 +36,11 @@ angular.module('GodTools', ['ionic', 'pascalprecht.translate'])
       templateUrl: 'settings/settings.html',
       controller: 'SettingsCtrl as settingsPage'
     })
+    .state('lang-pick', {
+      url: '/settings/lang/:primary',
+      templateUrl: 'settings/lang-picker.html',
+      controller: 'LangPickerCtrl as langPicker'
+    })
 
     $translateProvider.useLoader('customLoader', {});
     //$translateProvider.useCookieStorage();
