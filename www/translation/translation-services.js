@@ -21,6 +21,14 @@ angular.module('GodTools')
   .factory('GTLanguages', function($http, $q){
     var fact = {};
     var languageList = undefined;
+    var primaryLanguage = localStorage.getItem('primaryLang') || 'en';
+    fact.getPrimary = function(){
+      return primaryLanguage;
+    };
+    fact.setPrimary = function(newLangCode) {
+      localStorage.setItem('primaryLang', newLangCode);
+      primaryLanguage = newLangCode;
+    };
     fact.languages = function(){
       var deferred = $q.defer();
       if(languageList) {
