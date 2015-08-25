@@ -20,9 +20,10 @@
       </ion-slide>
     </ion-slide-box>
   </ion-content>
-  <div class="bar bar-footer bar-balanced">
+  <div class="bar bar-footer bar-balanced" ng-show="pager.hasParallelLang"
+       ng-click="pager.toggleLanguage()">
     <div class="buttons buttons-center">
-      <a class="button button-icon icon ion-loop" ng-click="pager.toggleLanguage()"></a>
+      <a class="button button-icon icon ion-loop"></a>
     </div>
   </div>
 </ion-view>

@@ -1,7 +1,8 @@
 angular.module('GodTools')
-  .controller('PackagePagerCtrl', function($translate, $ionicSlideBoxDelegate, GTLanguages) {
+  .controller('PackagePagerCtrl', function($scope, $translate, $ionicSlideBoxDelegate, GTLanguages) {
     this.showBars = false;
-    this.pageNumbers = [1,2,3,4,5]
+    this.pageNumbers = [1,2,3,4,5];
+    this.hasParallelLang = false;
 
     this.toggleBars = function(value) {
       if(value === undefined)
@@ -22,4 +23,9 @@ angular.module('GodTools')
       this.pageNumbers.push(++i)
       $ionicSlideBoxDelegate.update()
     }
+
+    var that = this;
+    $scope.$on('$ionicView.beforeEnter', function(){
+      that.hasParallelLang = !!GTLanguages.parallelCode();
+    });
   })
