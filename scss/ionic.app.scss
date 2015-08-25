@@ -20,6 +20,12 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+@mixin full-width-flex() {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
 
 
 ion-nav-view {
@@ -77,6 +83,11 @@ $headerFooterTransTime: 0.25s;
   .bar-footer {
     transition: bottom ease $headerFooterTransTime;
     bottom: -44px;
+    @include full-width-flex();
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
   }
   &.showBars {
     .bar-header {
@@ -199,31 +210,21 @@ $headerFooterTransTime: 0.25s;
   margin: .6em -10px;
   font-size: 16px;
   div {
-    -webkit-box-flex: 1;
     width: 20%;
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
+    @include full-width-flex
   }
-  .lang-row-status {
-    $width: 35px;
+  @mixin no-resize-flex($width) {
     -webkit-box-flex: 0 0 $width;
     width: $width;
     -webkit-flex: 0 0 $width;
     -ms-flex: 0 0 $width;
     flex: 0 0 $width;
   }
+  .lang-row-status { @include no-resize-flex(35px); }
   .lang-title {
     font-weight: bold;
   }
-  .lang-row-dow {
-    $width: 75px;
-    -webkit-box-flex: 0 0 $width;
-    width: $width;
-    -webkit-flex: 0 0 $width;
-    -ms-flex: 0 0 $width;
-    flex: 0 0 $width;
-  }
+  .lang-row-dow { @include no-resize-flex(75px); }
   .ion-checkmark {
     position: relative;
     left: 3px;
