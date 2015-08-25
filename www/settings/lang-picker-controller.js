@@ -28,16 +28,21 @@ angular.module('GodTools')
         lang.selected = (lang == newLang)
       });
       if(primaryLang) {
-        GTLanguages.setPrimary(newLang.code);
+        GTLanguages.primaryCode(newLang.code);
         $translate.use(newLang.code)
       }
+      else
+        GTLanguages.parallelCode(newLang.code);
     };
 
     GTLanguages.languages().then(function(languages){
       that.languages = [];
+      var primaryCode = GTLanguages.primaryCode();
       angular.forEach(languages, function(lang) {
-        lang = angular.copy(lang)
-        var selectedCode = primaryLang ? GTLanguages.getPrimary() : 'zh'
+        if(!primaryLang && lang.code == primaryCode)
+          return;
+        lang = angular.copy(lang);
+        var selectedCode = primaryLang ? primaryCode : GTLanguages.parallelCode();
         if(lang.code == selectedCode) {
           lang.selected = true;
         }

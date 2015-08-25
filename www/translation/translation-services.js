@@ -21,14 +21,24 @@ angular.module('GodTools')
   .factory('GTLanguages', function($http, $q){
     var fact = {};
     var languageList = undefined;
+
     var primaryLanguage = localStorage.getItem('primaryLang') || 'en';
-    fact.getPrimary = function(){
-      return primaryLanguage;
-    };
-    fact.setPrimary = function(newLangCode) {
+    var parallelLang = localStorage.getItem('parallelLang');
+    fact.primaryCode = function(newLangCode){
+      if(!newLangCode || newLangCode == primaryLanguage)
+        return primaryLanguage;
       localStorage.setItem('primaryLang', newLangCode);
-      primaryLanguage = newLangCode;
+      if(newLangCode == parallelLang)
+        fact.parallelCode('')
+      return primaryLanguage = newLangCode;
     };
+    fact.parallelCode = function(newLangCode){
+      if(newLangCode === undefined || newLangCode == parallelLang)
+        return parallelLang;
+      localStorage.setItem('parallelLang', newLangCode);
+      return parallelLang = newLangCode;
+    };
+
     fact.languages = function(){
       var deferred = $q.defer();
       if(languageList) {
