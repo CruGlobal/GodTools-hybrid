@@ -1,31 +1,8 @@
-/*
-To customize the look and feel of Ionic, you can override the variables
-in ionic's _variables.scss file.
-
-For example, you might change some of the default colors:
-
-$light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
-$positive:                        #387ef5 !default;
-$calm:                            #11c1f3 !default;
-$balanced:                        #33cd5f !default;
-$energized:                       #ffc900 !default;
-$assertive:                       #ef473a !default;
-$royal:                           #886aea !default;
-$dark:                            #444 !default;
-*/
-
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-@mixin full-width-flex() {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
 
 
 ion-nav-view {
@@ -83,10 +60,7 @@ $headerFooterTransTime: 0.25s;
   .bar-footer {
     transition: bottom ease $headerFooterTransTime;
     bottom: -44px;
-    @include full-width-flex();
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
+    flex: 1;
     justify-content: center;
   }
   &.showBars {
@@ -134,15 +108,15 @@ $headerFooterTransTime: 0.25s;
   }
   .kgp-button {
     margin-top: 1em;
-    border: 1px solid rgba(90, 90, 90, 0.4);
+    border: solid rgba(90, 90, 90, 0.4);
     border-width: 1px 0;
   }
   p {
     text-align: right;
+    font-size: 1.5em;
     font-weight: bold;
     position: absolute;
     bottom: 1em;
-    font-size: 1.5em;
     line-height: 1em;
   }
 }
@@ -156,40 +130,38 @@ $headerFooterTransTime: 0.25s;
     text-align: right;
   }
   h1 {
-    font-weight: bolder;
     font-size: 32px;
+    font-weight: bolder;
     margin-bottom: 0;
   }
   h2 {
     margin: 0 0 100px 0;
   }
   p {
-    font-size: 26px;
     line-height: 26px;
+    font-size: 26px;
     font-weight: 200;
   }
 }
+@mixin kgp-slide-color($color) {
+  background-color: $color;
+  .kgp-slide-header, h1 { color: $color }
+}
 .kgp-slide2 {
-  background-color: #7EB14F;
-  .kgp-slide-header, h1 { color: #7EB14F }
+  @include kgp-slide-color(#7EB14F);
   .kgp-button {
     margin-top: 4em;
   }
 }
 .kgp-slide3 {
-  background-color: #DC5C31;
-  .kgp-slide-header, h1 { color: #DC5C31 }
+  @include kgp-slide-color(#DC5C31);
   .kgp-button {
     margin-top: 2em;
   }
 }
-.kgp-slide4 {
-  background-color: #007486;
-  .kgp-slide-header, h1 { color: #007486 }
-}
+.kgp-slide4 { @include kgp-slide-color(#007486); }
 .kgp-slide5 {
-  background-color: lighten(#57324D, 15);
-  .kgp-slide-header, h1 { color: lighten(#57324D, 15) }
+  @include kgp-slide-color(lighten(#57324D, 15));
   .kgp-button {
     margin-top: 2em;
   }
@@ -202,22 +174,16 @@ $headerFooterTransTime: 0.25s;
 .lang-row {
   background-color: rgba(255, 255, 255, 0.15);
   margin-top: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   padding: .6em 1em;
   margin: .6em -10px;
   font-size: 16px;
   div {
     width: 20%;
-    @include full-width-flex
+    flex: 1;
   }
   @mixin no-resize-flex($width) {
-    -webkit-box-flex: 0 0 $width;
     width: $width;
-    -webkit-flex: 0 0 $width;
-    -ms-flex: 0 0 $width;
     flex: 0 0 $width;
   }
   .lang-row-status { @include no-resize-flex(35px); }
@@ -254,7 +220,7 @@ $headerFooterTransTime: 0.25s;
 }
 
 
-
+// loading animation - spinner
 .loader {
   font-size: 2px;
   position: relative;
@@ -263,36 +229,19 @@ $headerFooterTransTime: 0.25s;
   border-right: 1.1em solid rgba(255, 255, 255, 0.2);
   border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
   border-left: 1.1em solid #ffffff;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
   transform: translateZ(0);
-  -webkit-animation: load8 1.1s infinite linear;
   animation: load8 1.1s infinite linear;
 }
-div.loader,
-div.loader:after {
+div.loader, div.loader:after {
   border-radius: 50%;
   width: 10em;
   height: 10em;
 }
-@-webkit-keyframes load8 {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
 @keyframes load8 {
   0% {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
-
