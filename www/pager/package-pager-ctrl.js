@@ -29,3 +29,48 @@ angular.module('GodTools')
       that.hasParallelLang = !!GTLanguages.parallelCode();
     });
   })
+
+  .directive('pageClick', function(){
+    return {
+      template: '<div class="page-cover" on-touch="pageClick()" ng-class="{open : allPageClick}"></div>',
+      controller: function($scope) {
+        $scope.allPageClick = false;
+        $scope.$on('EnablePageClick', function() {
+          $scope.allPageClick = true;
+        });
+        $scope.$on('DisablePageClick', function() {
+          $scope.allPageClick = false;
+        });
+        $scope.pageClick = function(){
+          $scope.$broadcast('BodyClicked')
+        }
+      }
+    }
+  })
+
+  .directive('gtDetailsPopup', function(){
+    return {
+      scope: {
+        popupID: '=gtDetailsPopup',
+        title: '=titleString'
+      },
+      template: '<div ng-click="showPopup(); $event.stopPropagation();">{{title | translate}}</div>',
+      controller: function($scope, $ionicPopup, $translate) {
+        $scope.showPopup = function () {
+          $scope.$emit('EnablePageClick');
+          var template = "<div>Ahh!</div>"
+          if(window.kgpPanels[$scope.popupID])
+            template = window.kgpPanels[$scope.popupID].template;
+          myPopup = $ionicPopup.show({
+            template: template,
+            title: $translate.instant($scope.title)
+          });
+        };
+
+        $scope.$on('BodyClicked', function() {
+          myPopup.close();
+          $scope.$emit('DisablePageClick');
+        });
+      }
+    }
+  });
