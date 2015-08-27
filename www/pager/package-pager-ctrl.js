@@ -58,12 +58,16 @@ angular.module('GodTools')
       controller: function($scope, $ionicPopup, $translate) {
         $scope.showPopup = function () {
           $scope.$emit('EnablePageClick');
-          var template = "<div>Ahh!</div>"
-          if(window.kgpPanels[$scope.popupID])
+          var template = "<div>Ahh!</div>";
+          var cssClass = undefined;
+          if(window.kgpPanels[$scope.popupID]) {
+            cssClass = 'popup-'+window.kgpPanels[$scope.popupID].color;
             template = window.kgpPanels[$scope.popupID].template;
+          }
           myPopup = $ionicPopup.show({
             template: template,
-            title: $translate.instant($scope.title)
+            title: $translate.instant($scope.title),
+            cssClass: cssClass
           });
         };
 
