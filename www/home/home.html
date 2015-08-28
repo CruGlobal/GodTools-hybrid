@@ -7,7 +7,7 @@
     <img src="img/home_bookicon.png" class="book-icon">
     <ul class="home-package-list">
       <li ng-repeat="package in home.packages">
-        <a class="package-btn" href="#/{{package.code}}/1">
+        <a class="package-btn" href="#/{{package.code}}/1" ontouchstart="return true;">
           <img ng-src="{{package.code}}/icon.png">
           <span class="package-btn-title">{{package.name}}</span>
         </a>

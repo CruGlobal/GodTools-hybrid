@@ -1,9 +1,13 @@
 <ion-view title="Settings" class="settings-view">
   <ion-content class="padding">
     <label>Language:</label>
-    <a href="#/settings/lang/true" class="settings-button">{{settingsPage.primaryLang}} ></a>
+    <a href="#/settings/lang/true" class="settings-button" ontouchstart="return true;">
+      {{settingsPage.primaryLang}} >
+    </a>
     <label>Parallel Language*:</label>
-    <a href="#/settings/lang/false" class="settings-button">{{settingsPage.parallelLang}} ></a>
+    <a href="#/settings/lang/false" class="settings-button" ontouchstart="return true;">
+      {{settingsPage.parallelLang}} >
+    </a>
     <p>* You can change between languages by swiping up or tap the screen and use the Switch Language button (<i class="icon ion-loop"></i>)</p>
     <div class="settings-button">Allow Notifications</div>
     <br>
