@@ -4,7 +4,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
-
+@mixin prevent-no-header-jump($header-height) {
+  ion-content:not(.has-header) {
+    &[scroll='false'], .scroll {
+      padding-top: $header-height;
+    }
+  }
+}
 ion-nav-view {
   color: white;
   .pane {
@@ -14,9 +20,10 @@ ion-nav-view {
       background-color: #826c5c;
     }
   }
-  ion-content:not(.has-header) .scroll {
-    padding-top: 44px;
-  }
+  @include prevent-no-header-jump(44px);
+}
+.platform-ios.platform-cordova:not(.fullscreen) {
+  @include prevent-no-header-jump(64px);
 }
 .page-cover {
   height: 100%;
@@ -268,8 +275,8 @@ $headerFooterTransTime: 0.25s;
   label, .settings-button {
     font-size: 16px;
   }
-  .scroll {
-    padding-top: 1em;
+  .scroll :first-child {
+    margin-top: 1em;
   }
   label {
     display: block;
