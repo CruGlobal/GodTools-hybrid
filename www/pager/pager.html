@@ -1,8 +1,8 @@
 <ion-view hide-nav-bar="true" can-swipe-back="false"
           class="package-pager-pane" ng-class="{showBars: pager.showBars}">
   <ion-header-bar class="bar-calm">
-    <a class="button back-button buttons button-clear button-clear header-item" ng-click="$ionicGoBack()"
-       href="#/">
+    <a class="button back-button buttons button-clear button-clear header-item"
+       ng-click="$ionicGoBack()" href="#/">
       <i class="icon ion-ios-arrow-back"></i> Back
     </a>
     <div class="buttons buttons-right">
@@ -14,7 +14,7 @@
   </ion-header-bar>
   <ion-content scroll="false" class="package-slider">
     <ion-slide-box on-slide-changed="pager.toggleBars(false)" ng-click="pager.toggleBars()"
-                   on-swipe-up="pager.toggleLanguage()">
+                   on-swipe-up="pager.toggleLanguage()" on-swipe-down="pager.toggleLanguage()">
       <ion-slide ng-repeat="page in pager.pageNumbers">
         <ng-include src="'kgp/slide'+page+'.html'"></ng-include>
       </ion-slide>
