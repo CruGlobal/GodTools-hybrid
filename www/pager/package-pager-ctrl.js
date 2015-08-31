@@ -3,6 +3,7 @@ angular.module('GodTools')
     this.showBars = false;
     this.pageNumbers = [1,2,3,4,5];
     this.hasParallelLang = false;
+    this.packageCode = 'kgp'
 
     this.toggleBars = function(value) {
       if(value === undefined)
@@ -18,13 +19,27 @@ angular.module('GodTools')
         $translate.use(parallelCode)
     }
 
-    var i = 1;
-    this.addPage = function(){
-      this.pageNumbers.push(++i)
-      $ionicSlideBoxDelegate.update()
-    }
-
     var that = this;
+    var determineCanShare = function(){
+      that.canShare = window.plugins && window.plugins.socialsharing;
+    };
+    if(window.device) {
+      determineCanShare();
+    }
+    else {
+      document.addEventListener("deviceready", function(){
+        $scope.$apply(function() {
+          determineCanShare();
+        })
+      }, false);
+    }
+    this.share = function() {
+      window.plugins.socialsharing.share(
+        'http://www.godtoolsapp.com/?utm_source=godtools-ios&utm_campaign=app-sharing&package='+
+        that.packageCode+'&language='+$translate.use()
+      );
+    };
+
     $scope.$on('$ionicView.beforeEnter', function(){
       that.hasParallelLang = !!GTLanguages.parallelCode();
     });

@@ -1,7 +1,7 @@
 <ion-view title="God Tools" class="home-view" hide-back-button="true">
   <ion-nav-buttons side="right">
     <a class="button button-icon icon ion-gear-b" href="#/settings"></a>
-    <a class="button button-icon icon ion-share"></a>
+    <a class="button button-icon icon ion-share" ng-click="home.share()" ng-show="home.canShare"></a>
   </ion-nav-buttons>
   <ion-content scroll="false">
     <img src="img/home_bookicon.png" class="book-icon">
