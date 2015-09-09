@@ -1,7 +1,12 @@
 angular.module('GodTools')
-  .controller('PackagePagerCtrl', function($scope, $translate, $ionicSlideBoxDelegate, GTLanguages) {
+  .controller('PackagePagerCtrl', function($scope, $translate, $ionicSlideBoxDelegate, GTLanguages, NewLangLoader) {
     this.showBars = false;
-    this.pageNumbers = [1,2,3,4,5];
+    this.pageNumbers = [
+      {file: 'kgp/slide'+1+'.html', title: '1'},
+      {file: 'kgp/slide'+2+'.html', title: '2'},
+      {file: 'kgp/slide'+3+'.html', title: '3'},
+      {file: 'kgp/slide'+4+'.html', title: '4'},
+      {file: 'kgp/slide'+5+'.html', title: '5'}];
     this.hasParallelLang = false;
     this.packageCode = 'kgp'
 
@@ -43,6 +48,13 @@ angular.module('GodTools')
     $scope.$on('$ionicView.beforeEnter', function(){
       that.hasParallelLang = !!GTLanguages.parallelCode();
     });
+
+    NewLangLoader.getPages().then(function(pages){
+      that.pageNumbers = [];
+      angular.forEach(pages, function(page) {
+        that.pageNumbers.push({file: 'en/'+page._filename, title: page.__text})
+      });
+    })
   })
 
   .directive('pageClick', function(){
@@ -91,5 +103,13 @@ angular.module('GodTools')
           $scope.$emit('DisablePageClick');
         });
       }
+    }
+  })
+
+  // override angular-translate directive to prevent translating of strings.
+  .directive('translate', function(){
+    return {
+      priority: 1,
+      terminal: true
     }
   });

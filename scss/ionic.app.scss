@@ -71,7 +71,7 @@ ion-nav-view {
       top: 0;
     }
   }
-  .kgp-slide {
+  .kgp-slide, slide {
     padding-top: 2em;
   }
 }
@@ -109,6 +109,11 @@ $headerFooterTransTime: 0.25s;
 }
 
 
+button, page, title {
+  display: block;
+}
+
+
 .popup-container .popup {
   font-size: 14px;
   line-height: normal;
@@ -142,7 +147,7 @@ $headerFooterTransTime: 0.25s;
   margin-left: 9px;
 }
 
-.kgp-slide {
+.kgp-slide, page {
   height: 100%;
   color: white;
   padding: 1em 0 2em;

@@ -16,7 +16,7 @@
     <ion-slide-box on-slide-changed="pager.toggleBars(false)" ng-click="pager.toggleBars()"
                    on-swipe-up="pager.toggleLanguage()" on-swipe-down="pager.toggleLanguage()">
       <ion-slide ng-repeat="page in pager.pageNumbers">
-        <ng-include src="'kgp/slide'+page+'.html'"></ng-include>
+        <ng-include src="page.file"></ng-include>
       </ion-slide>
     </ion-slide-box>
   </ion-content>

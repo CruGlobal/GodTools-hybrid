@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "angular-translate": "~2.7.2",
-    "angular-translate-storage-cookie": "~2.7.2"
+    "angular-translate-storage-cookie": "~2.7.2",
+    "angular-xml": "~2.2.1"
   }
 }

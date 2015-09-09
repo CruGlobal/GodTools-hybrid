@@ -18,6 +18,27 @@ angular.module('GodTools')
 })
 
 
+  .factory('NewLangLoader', function($http, $q, x2js) {
+    var fact = {};
+    var _pages = undefined;
+    fact.getPages = function() {
+      var deferred = $q.defer();
+      if(_pages) {
+        deferred.resolve(_pages);
+      }
+      else {
+        $http.get('en/fc644ff5-399b-4252-a813-a059105c8e4a.xml')
+          .success(function(data) {
+            languageList = x2js.xml_str2json(data).document.page;
+            deferred.resolve(languageList)
+          }).error(function() { deferred.reject('Failed to load language list.')})
+      }
+      return deferred.promise
+    }
+    return fact;
+  })
+
+
   .factory('GTLanguages', function($http, $q){
     var fact = {};
     var languageList = undefined;
