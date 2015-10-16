@@ -112,4 +112,31 @@ angular.module('GodTools')
       priority: 1,
       terminal: true
     }
+  })
+
+  .directive('title', function($compile){
+    return {
+      restrict: 'E',
+      link: function (scope, element, attrs) {
+        element[0].outerHTML = element[0].outerHTML.replace('<title','<gt-title').
+          replace('</title>','</gt-title>').
+          replace(new RegExp('&lt;', 'g'),'<').
+          replace(new RegExp('&gt;', 'g'),'>');
+        $compile(element.contents())(scope);
+      }
+    }
+  })
+
+  .directive('page', function($compile){
+    return {
+      scope: {
+        colorCode: '@color',
+        image: '@backgroundimage'
+      },
+      link: function (scope, element, attrs) {
+        element.css('background-color', scope.colorCode)
+        //console.log(scope.colorCode)
+        //$compile(element.contents())(scope);
+      }
+    }
   });

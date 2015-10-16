@@ -109,7 +109,7 @@ $headerFooterTransTime: 0.25s;
 }
 
 
-button, page, title {
+button, page, gt-title, question {
   display: block;
 }
 
@@ -156,18 +156,18 @@ button, page, title {
     font-size: 16px;
   }
 
-  .kgp-slide-header {
+  gt-title {
     background-color: white;
     color: black;
     margin-right: 1em;
     padding: .5em 1em;
     min-height: 4.5em;
-    .kgp-number {
+    number {
       float: left;
       font-size: 4em;
       line-height: .9em;
     }
-    h1 {
+    heading {
       display: inline;
       font-size: 16px;
     }
@@ -175,7 +175,7 @@ button, page, title {
   .kgp-button, p, .kgp-button[gt-details-popup] div {
     padding: 8px 16px;
   }
-  .kgp-button {
+  button {
     margin-top: 1em;
     border: solid rgba(121, 121, 121, 0.64);
     border-width: 1px 0;
@@ -185,8 +185,14 @@ button, page, title {
     &[gt-details-popup] {
       padding: 0;
     }
+    buttontext {
+      display: block;
+    }
+    panel {
+      display: none;
+    }
   }
-  p {
+  question {
     text-align: right;
     font-size: 1.25em;
     font-weight: bold;
