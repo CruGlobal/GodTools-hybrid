@@ -127,6 +127,19 @@ angular.module('GodTools')
     }
   })
 
+    .directive('button', function ($compile) {
+        return {
+            restrict: 'E',
+            link: function (scope, element, attrs) {
+                element[0].outerHTML = element[0].outerHTML.replace('<button', '<button class="button button-full"').
+                    replace('</button>', '</button>').
+                    replace(new RegExp('&lt;', 'g'), '<').
+                    replace(new RegExp('&gt;', 'g'), '>');
+                $compile(element.contents())(scope);
+            }
+        }
+    })
+
   .directive('page', function($compile){
     return {
       scope: {
