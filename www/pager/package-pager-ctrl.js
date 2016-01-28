@@ -131,8 +131,10 @@ angular.module('GodTools')
         return {
             restrict: 'E',
             link: function (scope, element, attrs) {
-                element[0].outerHTML = element[0].outerHTML.replace('<button', '<button class="button button-full"').
-                    replace('</button>', '</button>').
+                element[0].outerHTML = element[0].outerHTML.replace('<button>', '<gt-button class="button button-full">').
+                    replace('<button mode="big">', '<gt-button class="button button-full">').
+                    replace(new RegExp('<button yoffset="-?[0-9]*">', 'g'), '<gt-button class="button button-full">').
+                    replace('</button>', '</gt-button>').
                     replace(new RegExp('&lt;', 'g'), '<').
                     replace(new RegExp('&gt;', 'g'), '>');
                 $compile(element.contents())(scope);

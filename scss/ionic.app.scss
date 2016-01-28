@@ -175,7 +175,7 @@ button, page, gt-title, question {
   .kgp-button, p, .kgp-button[gt-details-popup] div {
     padding: 8px 16px;
   }
-  button {
+  gt-button.button {
     margin-top: 1em;
     border: solid rgba(121, 121, 121, 0.64);
     border-width: 1px 0;
@@ -197,7 +197,9 @@ button, page, gt-title, question {
     font-size: 1.25em;
     font-weight: bold;
     position: absolute;
-    bottom: 1em;
+    bottom: 2.25em;
+    right: 1em;
+    left: 1em;
     line-height: 1em;
   }
 }
@@ -223,6 +225,47 @@ button, page, gt-title, question {
   @include kgp-slide-color(lighten(#57324D, 15));
 }
 
+page[buttons='1'] {
+    gt-button.button {
+        margin-top: 15%;
+    }
+}
+
+page[buttons='2'] {
+    gt-button.button {
+        margin-top: 25%;
+    }
+}
+
+page[bigbuttons='2'] {
+    gt-button.button {
+        margin-top: 10%;
+    }
+}
+
+page[buttons='3'] {
+    gt-button.button {
+        margin-top: 16.5%;
+    }
+}
+
+page[buttons='4'] {
+    gt-button.button {
+        margin-top: 12.5%;
+    }
+}
+
+page[buttons='5'] {
+    gt-button.button {
+        margin-top: 6%;
+    }
+}
+
+page[buttons='6'] {
+    gt-button.button {
+        margin-top: 5.5%;
+    }
+}
 
 .kgp-slide1 {
   padding: 48px 40px 48px 20px;
