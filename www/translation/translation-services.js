@@ -35,6 +35,57 @@ angular.module('GodTools')
       }
       return deferred.promise
     }
+    fact.fetchLanguage = function(langCode, packageCode) {
+      var getAllPages = function(pages) {
+        var promises = [];
+        angular.forEach(pages, function(p) {
+          promises.push(fact.fetchPage(p, 'en/'+p._filename))
+        });
+        return $q.all(promises)
+      };
+      var localStorageKey = langCode+'/'+packageCode;
+      return $q(function(resolve, reject) {
+        $http.get('en/fc644ff5-399b-4252-a813-a059105c8e4a.xml')
+          .success(function(data) {
+            var languageList = x2js.xml_str2json(data).document.page;
+            window.localStorage.setItem(localStorageKey, JSON.stringify(languageList))
+            getAllPages(languageList).then(function(allPages) {
+              //data.translatedPages = allPages;
+              resolve(allPages);
+            }, function() {
+              reject()
+            })
+          })
+          .error(function() { reject('Failed to load config.')})
+      })
+    };
+
+    fact.fetchPage =  function(page, filename) {
+      //var localStorageKey = langCode+'/'+packageCode+'/'+page;
+      return $q(function(resolve, reject) {
+        var pageDetails = undefined;
+        if(pageDetails) {
+          pageDetails = JSON.parse(pageDetails);
+          resolve(pageDetails)
+        }
+        else {
+          $http.get(filename)
+            .success(function(data) {
+              //var oParser = new DOMParser();
+              //var oDOM = oParser.parseFromString(data, "text/xml");
+              //
+              // data is an xml string right now, a great time to parse it!
+              //
+              data = data.replace('<?xml version="1.0" encoding="UTF-8"?>','')
+
+              //window.localStorage.setItem(localStorageKey, JSON.stringify(data))
+              page.html = data;
+              resolve(page)
+            })
+            .error(function() { reject('Failed to load page: '+page+'.')})
+        }
+      })
+    };
     return fact;
   })
 

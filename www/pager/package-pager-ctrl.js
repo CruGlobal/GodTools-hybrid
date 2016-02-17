@@ -49,10 +49,10 @@ angular.module('GodTools')
       that.hasParallelLang = !!GTLanguages.parallelCode();
     });
 
-    NewLangLoader.getPages().then(function(pages){
+    NewLangLoader.fetchLanguage().then(function(pages){
       that.pageNumbers = [];
       angular.forEach(pages, function(page) {
-        that.pageNumbers.push({file: 'en/'+page._filename, title: page.__text})
+        that.pageNumbers.push({title: page.__text, html: page.html})
       });
     })
   })
@@ -107,51 +107,51 @@ angular.module('GodTools')
   })
 
   // override angular-translate directive to prevent translating of strings.
-  .directive('translate', function(){
-    return {
-      priority: 1,
-      terminal: true
-    }
-  })
-
-  .directive('title', function($compile){
-    return {
-      restrict: 'E',
-      link: function (scope, element, attrs) {
-        element[0].outerHTML = element[0].outerHTML.replace('<title','<gt-title').
-          replace('</title>','</gt-title>').
-          replace(new RegExp('&lt;', 'g'),'<').
-          replace(new RegExp('&gt;', 'g'),'>');
-        $compile(element.contents())(scope);
-      }
-    }
-  })
-
-    .directive('button', function ($compile) {
-        return {
-            restrict: 'E',
-            link: function (scope, element, attrs) {
-                element[0].outerHTML = element[0].outerHTML.replace('<button>', '<gt-button class="button button-full">').
-                    replace('<button mode="big">', '<gt-button class="button button-full">').
-                    replace(new RegExp('<button yoffset="-?[0-9]*">', 'g'), '<gt-button class="button button-full">').
-                    replace('</button>', '</gt-button>').
-                    replace(new RegExp('&lt;', 'g'), '<').
-                    replace(new RegExp('&gt;', 'g'), '>');
-                $compile(element.contents())(scope);
-            }
-        }
-    })
-
-  .directive('page', function($compile){
-    return {
-      scope: {
-        colorCode: '@color',
-        image: '@backgroundimage'
-      },
-      link: function (scope, element, attrs) {
-        element.css('background-color', scope.colorCode)
-        //console.log(scope.colorCode)
-        //$compile(element.contents())(scope);
-      }
-    }
-  });
+  //.directive('translate', function(){
+  //  return {
+  //    priority: 1,
+  //    terminal: true
+  //  }
+  //})
+  //
+  //.directive('title', function($compile){
+  //  return {
+  //    restrict: 'E',
+  //    link: function (scope, element, attrs) {
+  //      element[0].outerHTML = element[0].outerHTML.replace('<title','<gt-title').
+  //        replace('</title>','</gt-title>').
+  //        replace(new RegExp('&lt;', 'g'),'<').
+  //        replace(new RegExp('&gt;', 'g'),'>');
+  //      $compile(element.contents())(scope);
+  //    }
+  //  }
+  //})
+  //
+  //  .directive('button', function ($compile) {
+  //      return {
+  //          restrict: 'E',
+  //          link: function (scope, element, attrs) {
+  //              element[0].outerHTML = element[0].outerHTML.replace('<button>', '<gt-button class="button button-full">').
+  //                  replace('<button mode="big">', '<gt-button class="button button-full">').
+  //                  replace(new RegExp('<button yoffset="-?[0-9]*">', 'g'), '<gt-button class="button button-full">').
+  //                  replace('</button>', '</gt-button>').
+  //                  replace(new RegExp('&lt;', 'g'), '<').
+  //                  replace(new RegExp('&gt;', 'g'), '>');
+  //              $compile(element.contents())(scope);
+  //          }
+  //      }
+  //  })
+  //
+  //.directive('page', function($compile){
+  //  return {
+  //    scope: {
+  //      colorCode: '@color',
+  //      image: '@backgroundimage'
+  //    },
+  //    link: function (scope, element, attrs) {
+  //      element.css('background-color', scope.colorCode)
+  //      //console.log(scope.colorCode)
+  //      //$compile(element.contents())(scope);
+  //    }
+  //  }
+  //});
