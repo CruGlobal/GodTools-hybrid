@@ -16,7 +16,7 @@
     <ion-slide-box on-slide-changed="pager.toggleBars(false)" ng-click="pager.toggleBars()"
                    on-swipe-up="pager.toggleLanguage()" on-swipe-down="pager.toggleLanguage()">
       <ion-slide ng-repeat="page in pager.pageNumbers">
-        <span ng-bind-html="page.html"></span>
+        <div ng-bind-html="page.html"></div>
       </ion-slide>
     </ion-slide-box>
   </ion-content>

@@ -1,5 +1,5 @@
 angular.module('GodTools')
-  .controller('PackagePagerCtrl', function($scope, $translate, $ionicSlideBoxDelegate, GTLanguages, NewLangLoader) {
+  .controller('PackagePagerCtrl', function($scope, $translate, $ionicSlideBoxDelegate, $sce, GTLanguages, NewLangLoader) {
     this.showBars = false;
     this.pageNumbers = [
       {file: 'kgp/slide'+1+'.html', title: '1'},
@@ -52,7 +52,7 @@ angular.module('GodTools')
     NewLangLoader.fetchLanguage().then(function(pages){
       that.pageNumbers = [];
       angular.forEach(pages, function(page) {
-        that.pageNumbers.push({title: page.__text, html: page.html})
+        that.pageNumbers.push({title: page.__text, html: $sce.trustAsHtml(page.html)})
       });
     })
   })
