@@ -1,12 +1,8 @@
 angular.module('GodTools')
-  .controller('PackagePagerCtrl', function($scope, $translate, $ionicSlideBoxDelegate, $sce, GTLanguages, NewLangLoader) {
-    this.showBars = false;
-    this.pageNumbers = [
-      {file: 'kgp/slide'+1+'.html', title: '1'},
-      {file: 'kgp/slide'+2+'.html', title: '2'},
-      {file: 'kgp/slide'+3+'.html', title: '3'},
-      {file: 'kgp/slide'+4+'.html', title: '4'},
-      {file: 'kgp/slide'+5+'.html', title: '5'}];
+  .controller('PackagePagerCtrl', function ($scope, $translate, $ionicSlideBoxDelegate, $sce, GTLanguages, NewLangLoader) {
+      this.showBars = false;
+      //TODO Add a loading screen page as the default value for pageNumbers
+    this.pageNumbers = [];
     this.hasParallelLang = false;
     this.packageCode = 'kgp'
 
@@ -49,11 +45,12 @@ angular.module('GodTools')
       that.hasParallelLang = !!GTLanguages.parallelCode();
     });
 
-    NewLangLoader.fetchLanguage().then(function(pages){
+    NewLangLoader.fetchLanguage().then(function (pages) {
       that.pageNumbers = [];
-      angular.forEach(pages, function(page) {
-        that.pageNumbers.push({title: page.__text, html: $sce.trustAsHtml(page.html)})
+      angular.forEach(pages, function (page) {
+          that.pageNumbers.push({ title: page.__text, html: $sce.trustAsHtml(page.html) })
       });
+      $ionicSlideBoxDelegate.update();
     })
   })
 
