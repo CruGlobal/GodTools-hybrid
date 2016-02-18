@@ -9529,6 +9529,9 @@ ion-nav-view {
 button, page, gt-title, question {
   display: block; }
 
+.page {
+  height: 100%; }
+
 .popup-container .popup {
   font-size: 14px;
   line-height: normal;
@@ -9584,16 +9587,18 @@ button, page, gt-title, question {
       font-size: 16px; }
   .kgp-slide .kgp-button, .kgp-slide p, .kgp-slide .kgp-button[gt-details-popup] div, page .kgp-button, page p, page .kgp-button[gt-details-popup] div {
     padding: 8px 16px; }
-  .kgp-slide gt-button.button, page gt-button.button {
+  .kgp-slide gt-button.button, .kgp-slide gt-button.button.activated, .kgp-slide gt-button.button:hover, page gt-button.button, page gt-button.button.activated, page gt-button.button:hover {
     margin-top: 1em;
     border: solid rgba(121, 121, 121, 0.64);
     border-width: 1px 0;
-    font-size: 1.2em; }
-    .kgp-slide gt-button.button[gt-details-popup], page gt-button.button[gt-details-popup] {
+    font-size: 1.2em;
+    background: none;
+    color: white; }
+    .kgp-slide gt-button.button[gt-details-popup], .kgp-slide gt-button.button.activated[gt-details-popup], .kgp-slide gt-button.button:hover[gt-details-popup], page gt-button.button[gt-details-popup], page gt-button.button.activated[gt-details-popup], page gt-button.button:hover[gt-details-popup] {
       padding: 0; }
-    .kgp-slide gt-button.button buttontext, page gt-button.button buttontext {
+    .kgp-slide gt-button.button buttontext, .kgp-slide gt-button.button.activated buttontext, .kgp-slide gt-button.button:hover buttontext, page gt-button.button buttontext, page gt-button.button.activated buttontext, page gt-button.button:hover buttontext {
       display: block; }
-    .kgp-slide gt-button.button panel, page gt-button.button panel {
+    .kgp-slide gt-button.button panel, .kgp-slide gt-button.button.activated panel, .kgp-slide gt-button.button:hover panel, page gt-button.button panel, page gt-button.button.activated panel, page gt-button.button:hover panel {
       display: none; }
   .kgp-slide question, page question {
     text-align: right;
@@ -9637,7 +9642,7 @@ page[buttons='2'] gt-button.button {
   margin-top: 25%; }
 
 page[bigbuttons='2'] gt-button.button {
-  margin-top: 10%; }
+  margin-top: 7.5%; }
 
 page[buttons='3'] gt-button.button {
   margin-top: 16.5%; }

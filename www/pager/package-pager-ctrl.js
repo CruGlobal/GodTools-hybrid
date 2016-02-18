@@ -1,7 +1,7 @@
 angular.module('GodTools')
   .controller('PackagePagerCtrl', function ($scope, $translate, $ionicSlideBoxDelegate, $sce, GTLanguages, NewLangLoader) {
-      this.showBars = false;
-      //TODO Add a loading screen page as the default value for pageNumbers
+    this.showBars = false;
+    //TODO Add a loading screen page as the default value for pageNumbers
     this.pageNumbers = [];
     this.hasParallelLang = false;
     this.packageCode = 'kgp'
@@ -103,6 +103,28 @@ angular.module('GodTools')
     }
   })
 
+    .directive('compile', ['$compile', function ($compile) {
+        return function (scope, element, attrs) {
+            scope.$watch(
+                function (scope) {
+                    // watch the 'compile' expression for changes
+                    return scope.$eval(attrs.compile);
+                },
+                function (value) {
+                    // when the 'compile' expression changes
+                    // assign it into the current DOM
+                    element.html(value);
+
+                    // compile the new DOM and link it to the current
+                    // scope.
+                    // NOTE: we only compile .childNodes so that
+                    // we don't get into infinite loop compiling ourselves
+                    $compile(element.contents())(scope);
+                }
+            );
+        };
+    }])
+
   // override angular-translate directive to prevent translating of strings.
   //.directive('translate', function(){
   //  return {
@@ -139,16 +161,16 @@ angular.module('GodTools')
   //      }
   //  })
   //
-  //.directive('page', function($compile){
-  //  return {
-  //    scope: {
-  //      colorCode: '@color',
-  //      image: '@backgroundimage'
-  //    },
-  //    link: function (scope, element, attrs) {
-  //      element.css('background-color', scope.colorCode)
-  //      //console.log(scope.colorCode)
-  //      //$compile(element.contents())(scope);
-  //    }
-  //  }
-  //});
+  .directive('page', function($compile){
+    return {
+      scope: {
+        colorCode: '@color',
+        image: '@backgroundimage'
+      },
+      link: function (scope, element, attrs) {
+          element.css('background-color', scope.colorCode);
+        //console.log(scope.colorCode);
+        //$compile(element.contents())(scope);
+      }
+    }
+  });

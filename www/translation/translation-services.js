@@ -76,14 +76,15 @@ angular.module('GodTools')
               //
               // data is an xml string right now, a great time to parse it!
               //
-              data = data.replace('<?xml version="1.0" encoding="UTF-8"?>', '').
-                          replace(new RegExp('<title', 'g'), '<gt-title').
-                          replace(new RegExp('</title>', 'g'), '</gt-title>')./*
-                          replace(new RegExp('<button[>\s]', 'g'), '<gt-button class="button button-full"').
-                          replace(new RegExp('</button>', 'g'), '</gt-button>').*/
-                          replace(new RegExp('&lt;', 'g'), '<').
-                          replace(new RegExp('&gt;', 'g'), '>');
-
+                data = data.replace('<?xml version="1.0" encoding="UTF-8"?>', '').
+                            replace(new RegExp('<title', 'g'), '<gt-title').
+                            replace(new RegExp('</title>', 'g'), '</gt-title>').
+                            replace(new RegExp('<button[\\s>]', 'g'), '<gt-button class="button button-full"').
+                            replace(new RegExp('</button>', 'g'), '</gt-button>').
+                            replace(new RegExp('translate="(.*)"', 'g'), '').
+                            replace(new RegExp('<image align="center">(.*)</image>', 'g'), function () {
+                                return '<img align="center" src="/img/'+arguments[1]+'">';
+                            });
               //window.localStorage.setItem(localStorageKey, JSON.stringify(data))
               page.html = data;
               resolve(page)
