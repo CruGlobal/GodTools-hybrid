@@ -103,6 +103,15 @@ angular.module('GodTools')
     }
   })
 
+    .directive('gtButton', function () {
+        return {
+            template: '<div ng-click="showPopup();">Button Title</div>',
+            link: function (scope, elements, attrs) {
+                scope.showPopup = function () { console.log("Clicked"); }
+            }
+        }
+    })
+
     .directive('compile', ['$compile', function ($compile) {
         return function (scope, element, attrs) {
             scope.$watch(
